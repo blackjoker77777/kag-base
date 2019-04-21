@@ -2,7 +2,6 @@
 
 CPlayer@ getAssistPlayer(CPlayer@ victim, CPlayer@ killer)
 {
-	//no assist if teamkill
 	if (victim is null || killer is null || victim.getTeamNum() == killer.getTeamNum())
 	{
 		return null;
@@ -85,8 +84,7 @@ CPlayer@ getAssistPlayer(CPlayer@ victim, CPlayer@ killer)
 		if (totalDamage >= assistDamage)
 		{
 			//killer cannot assist their own kill
-			//helper needs to be from a different team
-			if (origHitter is killer || victim.getTeamNum() == origHitter.getTeamNum())
+			if (origHitter is killer || origHitter.getTeamNum()==victim.getTeamNum())
 			{
 				return null;
 			}
